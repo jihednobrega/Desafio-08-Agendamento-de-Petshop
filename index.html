@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo Pet</title>
+
+  <link rel="stylesheet" href="/src/styles/index.css">
+</head>
+<body>
+  <div id="logo">
+    <div class="logo-wrapper flex gap-4">
+      <img src="src/assets/Logo.svg" alt="">
+      <span>Mundo Pet</span>
+    </div>
+  </div>
+  <div id="container" class="flex flex-col gap-32">
+    <header class="flex gap-12">
+      <div class="title flex flex-col gap-4">
+        <h1>Sua agenda</h1>
+        <p>Aqui você pode ver todos os clientes e serviços agendados para hoje.</p>
+      </div>
+      <fieldset>
+        <label for="date" class="flex gap-8">
+          <img src="src/assets/Calendar.svg" alt="Calendário">
+          <input type="date" id="date" name="date">
+        </label>
+      </fieldset>
+    </header>
+
+    <div class="list flex flex-col gap-12">
+      <div id="morning" class="schedule-list">
+        <div class="header">
+          <img src="src/assets/Sunset.svg" alt="manhã">
+          <strong>Manhã</strong>
+          <span>09h-12h</span>
+        </div>
+        <ul class="clients-list">
+          <li>
+            <div class="client-infos">
+              <span>09:00</span>
+              <span class="pet-name">Thor</span>
+              <span class="client-name">/ Fernanda Costa</span>
+              <p>Vacinação</p>
+            </div>
+            <span class="schedule-cancel">Remover agendamento</span>
+          </li>
+        </ul>
+      </div>
+
+      <div id="afternoon" class="schedule-list">
+        <div class="header">
+          <img src="src/assets/Cloud.svg" alt="tarde">
+          <strong>Tarde</strong>
+          <span>13h-18h</span>
+        </div>
+        <ul class="clients-list">
+          <li>
+            <div class="client-infos">
+              <span>13:00</span>
+              <span class="pet-name">Mel</span>
+              <span class="client-name">/ João Souza</span>
+              <p>Corte de Unhas</p>
+            </div>
+            <span class="schedule-cancel">Remover agendamento</span>
+          </li>
+          <li>
+            <div class="client-infos">
+              <span>14:00</span>
+              <span class="pet-name">Bella</span>
+              <span class="client-name">/ Pedro Martins</span>
+              <p>Aplicação de Anti-pulgas</p>
+            </div>
+            <span class="schedule-cancel">Remover agendamento</span>
+          </li>
+          <li>
+            <div class="client-infos">
+              <span>15:00</span>
+              <span class="pet-name">Simba</span>
+              <span class="client-name">/ Juliana Rocha</span>
+              <p>Tosa Higiênica</p>
+            </div>
+            <span class="schedule-cancel">Remover agendamento</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="night" class="schedule-list">
+        <div class="header">
+          <img src="src/assets/Moon.svg" alt="noite">
+          <strong>Noite</strong>
+          <span>19h-21h</span>
+        </div>
+        <ul class="clients-list">
+          <li>
+            <div class="client-infos">
+              <span>20:00</span>
+              <span class="pet-name">Max</span>
+              <span class="client-name">/ Camila Santos</span>
+              <p>Limpeza de Dentes</p>
+            </div>
+            <span class="schedule-cancel">Remover agendamento</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="new-schedule" class="flex">
+    <button>Novo agendamento</button>
+  </div>
+  <div id="modal" class="hide">
+    <form class="inner-modal flex flex-col gap-28">
+      <div class="title flex flex-col gap-4">
+        <h1>Agende um atendimento</h1>
+        <p>Preencha os dados do cliente para realizar o agendamento:</p>
+      </div>
+      <fieldset class="flex flex-col gap-16">
+        <div class="input-wrapper">
+          <label for="tutor-name">Nome do tutor</label>
+          <label for="tutor-name" class="input">
+            <img src="src/assets/User.svg" alt="ícone de usuário">
+            <input type="text" id="tutor-name" name="tutor-name" placeholder="ex: Helena Souza">
+          </label>
+        </div>
+        <div class="input-wrapper">
+          <label for="pet-name">Nome do pet</label>
+          <label for="pet-name" class="input">
+            <img src="src/assets/Pet.svg" alt="ícone de pet">
+            <input type="text" id="pet-name" name="pet-name" placeholder="ex: Cheddar">
+          </label>
+        </div>
+        <div class="input-wrapper">
+          <label for="contact-phone">Telefone</label>
+          <label for="contact-phone" class="input">
+            <img src="src/assets/Phone.svg" alt="ícone de telefone">
+            <input type="tel" id="contact-phone" name="contact-phone" placeholder="ex: (00) 0 0000-0000">
+          </label>
+        </div>
+        <div class="input-wrapper">
+          <label for="service-description">Descrição do serviço</label>
+          <label for="service-description" class="input">
+            <textarea id="service-description" name="service-description" cols="30" rows="3" placeholder="ex: Banho e tosa"></textarea>
+          </label>
+        </div>
+        <div class="input-wrapper">
+          <label for="form-date">Data</label>
+          <label for="form-date" class="input">
+            <img src="src/assets/Calendar.svg" alt="ícone de calendário">
+            <input type="date" id="form-date" name="form-date">
+          </label>
+        </div>
+        <div class="input-wrapper">
+          <label for="form-hour">Hora</label>
+          <label for="form-hour" class="input">
+            <img src="src/assets/Clock.svg" alt="ícone de relógio">
+            <input type="time" id="form-hour" name="form-hour">
+          </label>
+        </div>
+      </fieldset>
+      <button class="schedule-button" type="submit">Agendar</button>
+      <img src="src/assets/Close.svg" alt="fechar novo agendamento" class="close-new-schedule desktop-only">
+    </form>
+  </div>
+  <div class="modal-bg hide"></div>
+</body>
+</html>
