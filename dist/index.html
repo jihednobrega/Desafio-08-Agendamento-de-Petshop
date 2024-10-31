@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mundo Pet</title>
-</head>
+<link rel="icon" href="Logo.svg"><script defer src="main.js"></script></head>
 <body>
   <div id="logo">
     <div class="logo-wrapper flex gap-4">
@@ -116,63 +116,47 @@
         <h1>Agende um atendimento</h1>
         <p>Preencha os dados do cliente para realizar o agendamento:</p>
       </div>
-      <fieldset class="grid gap-16">
+      <fieldset class="flex flex-col gap-16">
         <div class="input-wrapper">
-          <label>Nome do tutor</label>
+          <label for="tutor-name">Nome do tutor</label>
           <label for="tutor-name" class="input">
             <img src="src/assets/User.svg" alt="ícone de usuário">
             <input type="text" id="tutor-name" name="tutor-name" placeholder="ex: Helena Souza">
           </label>
         </div>
         <div class="input-wrapper">
-          <label>Nome do pet</label>
+          <label for="pet-name">Nome do pet</label>
           <label for="pet-name" class="input">
             <img src="src/assets/Pet.svg" alt="ícone de pet">
             <input type="text" id="pet-name" name="pet-name" placeholder="ex: Cheddar">
           </label>
         </div>
         <div class="input-wrapper">
-          <label>Telefone</label>
+          <label for="contact-phone">Telefone</label>
           <label for="contact-phone" class="input">
             <img src="src/assets/Phone.svg" alt="ícone de telefone">
-            <input type="text" id="contact-phone" name="contact-phone" placeholder="ex: (00) 0 0000-0000">
+            <input type="tel" id="contact-phone" name="contact-phone" placeholder="ex: (00) 0 0000-0000">
           </label>
         </div>
         <div class="input-wrapper">
-          <label>Descrição do serviço</label>
+          <label for="service-description">Descrição do serviço</label>
           <label for="service-description" class="input">
             <textarea id="service-description" name="service-description" cols="30" rows="3" placeholder="ex: Banho e tosa"></textarea>
           </label>
         </div>
         <div class="input-wrapper">
-          <label>Data</label>
-          <label for="form-date" class="input form-date">
+          <label for="form-date">Data</label>
+          <label for="form-date" class="input">
             <img src="src/assets/Calendar.svg" alt="ícone de calendário">
             <input type="date" id="form-date" name="form-date">
           </label>
         </div>
         <div class="input-wrapper">
-          <label>Hora</label>
-          <div id="form-hour" class="input">
+          <label for="form-hour">Hora</label>
+          <label for="form-hour" class="input">
             <img src="src/assets/Clock.svg" alt="ícone de relógio">
-            <div id="selected-hour" class="select">Selecione um horário</div>
-            <img src="./src/assets/Arrow-down.svg" alt="Seta para baixo">
-            <ul id="options" class="hide">
-              <!-- <li class="option">
-                <input id="input-selected-hour" type="radio" name="hour" value="09:00" data-label="09:00">
-                <span>09:00</span>
-              </li>
-              <li class="option">
-                <input id="input-selected-hour" type="radio" name="hour" value="15:00" data-label="15:00" disabled>
-                <span>15:00</span>
-              </li>
-              <li class="option">
-                <input id="input-selected-hour" type="radio" name="hour" value="20:00" data-label="20:00">
-                <span>20:00</span> -->
-              </li>
-            </ul>
-          </div>
-
+            <input type="time" id="form-hour" name="form-hour">
+          </label>
         </div>
       </fieldset>
       <button class="schedule-button" type="submit">Agendar</button>

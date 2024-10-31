@@ -44,6 +44,12 @@
   --label-small: 700 12px/16px var(--inter);
 
   --link: 500 12px/16px var(--inter);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%
 }
 
 body {
@@ -56,6 +62,10 @@ body {
 
 .desktop-only {
   display: inherit;
+}
+
+.grid {
+  display: grid;
 }
 
 .flex {
@@ -109,6 +119,14 @@ li {
     font: var(--paragraph-medium);
     color: var(--content-secondary);
   }
+}
+
+& .input-selected {
+  border: 1px solid var(--border-brand) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--content-tertiary);
 }
 
 .schedule-list {
@@ -295,6 +313,7 @@ li {
   background-color: var(--background-tertiary);
   border-radius: 12px;
   z-index: 10;
+  margin-top: 30px;
   
   & .inner-modal {
     padding: 40px 20px;
@@ -302,6 +321,8 @@ li {
 
     & fieldset {
       border: none;
+      justify-content: center;
+      grid-template-areas: "tutor-name" "pet-name" "tel" "description" "date" "hour";
 
       & .input-wrapper {
         display: flex;
@@ -327,7 +348,7 @@ li {
             height: 20px;
           }
 
-          & input, textarea {
+          & input, & textarea, & .select {
             background-color: transparent;
             border: none;
             outline: none;
@@ -349,9 +370,121 @@ li {
             outline: transparent;
           }
 
+          /* & .select {
+            &:focus {
+              border: 1px solid var(--border-brand);
+              outline: transparent;
+            }
+          } */
+
           & ::-webkit-calendar-picker-indicator {
             background: url(../assets/Arrow-down.svg) no-repeat;
           }
+
+          & #selected-value {
+            color: var(--content-tertiary);
+          }
+        }
+
+        & #form-hour {
+          position: relative;
+
+          
+        }
+
+        & #options {
+          border-radius: 8px;
+          border: 1px solid var(--border-secondary);
+          background-color: var(--background-secondary);
+          overflow: hidden;
+
+          position: absolute;
+          top: 54px;
+          left: 0;
+          right: 0;
+
+          & .option {
+            
+            padding: 4px;
+
+            position: relative;
+
+            & span {
+              color: var(--content-primary);
+              font-family: var(--inter);
+              font-size: 1rem;
+              font-weight: 400;
+              line-height: 150%;
+            }
+
+            &:has(input:checked),
+            &:not(:has(input[disabled])):hover {
+              background-color: var(--background-tertiary);
+            }
+
+            /* &:has(input:focus) {
+              background-color: var(--background-brand);
+              outline: 1px solid var(--border-divisor);
+            } */
+
+            & .selected-hour {
+              background-color: var(--background-brand);
+              outline: 1px solid var(--border-divisor);
+            }
+
+            & input[type="radio"] {
+              all: unset;
+
+              position: absolute;
+              inset: 0;
+            }
+
+            &:has(input[disabled]) span {
+              color: var(--content-tertiary);
+            }
+
+            & input[disabled] {
+              cursor: not-allowed;
+            }
+
+          }
+        }
+
+        #form-hour {
+          color: var(--content-primary);
+        
+          font-family: var(--inter);
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 150%;
+        }
+
+        &:has([id="tutor-name"]) {
+          grid-area: tutor-name;
+        }
+
+        &:has([id="pet-name"]) {
+          grid-area: pet-name;
+        }
+
+        &:has([id="contact-phone"]) {
+          grid-area: tel;
+        }
+
+        &:has([id="service-description"]) {
+          grid-area: description;
+        }
+
+        &:has([id="form-date"]) {
+          grid-area: date;
+
+          & input {
+            max-height: 24px;
+          }
+        }
+
+        &:has([id="input-selected-hour"]) {
+          grid-area: hour;
         }
       }
     }
@@ -363,6 +496,7 @@ li {
       text-transform: uppercase;
       font: var(--label-large);
 
+      border: none;
       border-radius: 8px;
       background-color: var(--background-brand);
     }
@@ -481,8 +615,13 @@ li {
   }
 
   #modal {
+    margin-top: initial;
     & .inner-modal {
       padding: 40px;
+
+      & fieldset {
+        grid-template-areas: "tutor-name tutor-name" "pet-name pet-name" "tel tel" "description description" "date hour";
+      }
 
       & ::-webkit-calendar-picker-indicator {
         cursor: pointer;
