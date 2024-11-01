@@ -15,6 +15,7 @@
   --background-primary: #151515;
   --background-secondary: #1E1E1E;
   --background-tertiary: #23242C;
+  --background-selection: #1E1E1EF5;
   --background-logo: #2E2C30;
   --background-brand: #9282FA;
   --background-highlights: #BDB4FA;
@@ -370,13 +371,6 @@ input::placeholder, textarea::placeholder {
             outline: transparent;
           }
 
-          /* & .select {
-            &:focus {
-              border: 1px solid var(--border-brand);
-              outline: transparent;
-            }
-          } */
-
           & ::-webkit-calendar-picker-indicator {
             background: url(../assets/Arrow-down.svg) no-repeat;
           }
@@ -388,18 +382,16 @@ input::placeholder, textarea::placeholder {
 
         & #form-hour {
           position: relative;
-
-          
         }
 
         & #options {
           border-radius: 8px;
-          border: 1px solid var(--border-secondary);
-          background-color: var(--background-secondary);
+          border: 1px solid var(--border-primary);
+          background-color: var(--background-selection);
           overflow: hidden;
 
           position: absolute;
-          top: 54px;
+          bottom: 54px;
           left: 0;
           right: 0;
 
@@ -421,11 +413,6 @@ input::placeholder, textarea::placeholder {
             &:not(:has(input[disabled])):hover {
               background-color: var(--background-tertiary);
             }
-
-            /* &:has(input:focus) {
-              background-color: var(--background-brand);
-              outline: 1px solid var(--border-divisor);
-            } */
 
             & .selected-hour {
               background-color: var(--background-brand);
@@ -616,11 +603,13 @@ input::placeholder, textarea::placeholder {
 
   #modal {
     margin-top: initial;
+    width: 570px;
     & .inner-modal {
       padding: 40px;
 
       & fieldset {
         grid-template-areas: "tutor-name tutor-name" "pet-name pet-name" "tel tel" "description description" "date hour";
+        grid-template-columns: 50% 50%;
       }
 
       & ::-webkit-calendar-picker-indicator {

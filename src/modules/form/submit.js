@@ -1,5 +1,6 @@
 import dayjs from "dayjs"
-import { hoursLoad } from "../form/hours-load.js"
+import { scheduleNew } from "../../services/schedule-new.js"
+import { schedulesDay, schedulesToday } from "../schedules/load.js"
 
 const form = document.querySelector("form")
 const closeForm = document.querySelector(".close-new-schedule")
@@ -47,6 +48,8 @@ formHour.addEventListener('click', () => {
 document.addEventListener("click", (event) => {
   if (!formHour.contains(event.target) && !optionsHours.classList.contains("hide")) {
     optionsHours.classList.add("hide");
+    formHour.classList.toggle("input-selected")
+
   }
   
   else if (!modal.classList.contains("hide") && !newScheduleButton.contains(event.target)) {
@@ -59,14 +62,14 @@ document.addEventListener("click", (event) => {
 
 formDate.addEventListener("click", (e) => {
   e.preventDefault()
-  console.log(formDate.textContent)
+
   selectedDate.showPicker()
   if (!selectedDate.showPicker) {
     selectedDate.click();
   }
 })
 
-form.onsubmit = (event) => {
+form.onsubmit = async (event) => {
   event.preventDefault()
 
   try {
@@ -107,14 +110,19 @@ form.onsubmit = (event) => {
     
     // Gera um ID
     const id = new Date().getTime()
-    console.log({
+
+    // Faz o agendamento
+    await scheduleNew({
       id, 
       name,
       pet,
       tel, 
       services,
       when,
-      })
+    })
+
+    // Recarrega os agendamentos
+    await schedulesToday()
   } catch (error) {
     alert("Não foi possível realizar o agendamento.")
     console.log(error)
@@ -154,8 +162,7 @@ function toggleScreen() {
 
 function resetInputs() {
   selectedDate.value = inputToday
-  const date = selectedDate.value
-  hoursLoad({ date })
+  schedulesDay()
   tutorName.value = ""
   petName.value = ""
   contactPhone.value = ""

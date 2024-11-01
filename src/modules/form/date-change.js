@@ -1,4 +1,4 @@
-import { schedulesDay } from "../schedules/load.js"
+import { schedulesDay, schedulesToday } from "../schedules/load.js"
 
 // Seleciona o input de data
 const selectedDate = document.getElementById("form-date")
@@ -9,4 +9,12 @@ selectedDate.onchange = () => {
 
   schedulesDay()
   selectedHour.textContent = "Selecione um horário"
+}
+
+// Seleciona o input de data na página de horários agendados
+const scheduleSelectedDate = document.getElementById("date")
+
+// Recarrega a lista de horários quando o input de data mudar
+scheduleSelectedDate.onchange = () => {
+  schedulesToday()
 }
